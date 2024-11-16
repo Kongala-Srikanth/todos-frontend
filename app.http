@@ -1,0 +1,33 @@
+
+API-1 Create New User
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "srikanth",
+    "email": "srikanth@gmail.com",
+    "password": "srikanth@123"
+}
+
+// API-2 Login Existing User
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "srikanth@gmail.com",
+    "password": "srikanth@123"
+}
+
+// API-3 Create Todos
+###
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+    "id": 1,
+    "taskTitle": "Python",
+    "status": "Pending"
+}
