@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {v4:uuidv4} = require('uuid')
+// const {v4:uuidv4} = require('uuid')
 require('dotenv').config();
 const {ObjectId, MongoClient} = require('mongodb')
 
@@ -37,6 +37,8 @@ const initializeDBandServer = async () => {
 }
 
 initializeDBandServer()
+
+
 
 const middlewareJwtToken = (request, response, next) => {
     let jwtToken
@@ -273,3 +275,20 @@ app.put('/profile', middlewareJwtToken, async (request, response) => {
         response.status(500).send({ errorMsg: "Failed to update user data" });
     }
 });
+
+
+app.get('/todos', middlewareJwtToken, async (request, response) => {
+    const userCollection = client.db(process.env.DB_NAME).collection('todoList');
+    const {userId} = request
+    const findUserId = new ObjectId(userId)
+
+    try{
+        const data = await userCollection.find({userId: findUserId}).toArray()
+        response.status(200).json(data)
+
+    }catch (e){
+        console.log('Error fetching all todos:', e)
+        response.status(500).json({message: 'Failed to fetch todos', error: e.message})
+    }
+    
+})

@@ -28,6 +28,6 @@ Content-Type: application/json
 
 {
     "id": 1,
-    "taskTitle": "Python",
+    "task": "Python",
     "status": "Pending"
 }
