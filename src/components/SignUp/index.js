@@ -35,7 +35,7 @@ const SignUp = () => {
                 history.push('/login');  
             } else {
                 const data = await response.json();
-                setError(data.message || 'Something went wrong. Please try again.');
+                setError(data.errorMsg || 'Something went wrong. Please try again.');
             }
         } catch (err) {
             setError('Failed to connect to the server. Please try again later.');

@@ -10,10 +10,11 @@ import './App.css';
 function App() {
   return (
     <Switch>
-      <ProtectedRoute exact path='/login' component={Login} />
-      <ProtectedRoute exact path='/signup' component={SignUp} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={SignUp} />
       <ProtectedRoute exact path='/' component={Todos} />
       <ProtectedRoute exact path='/profile' component={Profile} />
+      <Redirect to='/' />
     </Switch>
   );
 }

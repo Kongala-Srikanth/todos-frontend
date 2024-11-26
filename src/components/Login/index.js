@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
-import { useHistory } from 'react-router-dom'; 
+import { useHistory, Redirect } from 'react-router-dom'; 
 import './index.css';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const history = useHistory(); 
+
+    if (Cookies.get('jwt') !== undefined){
+        return <Redirect to='/' />
+    }
 
     const onSubmitLogin = async (e) => {
         e.preventDefault();
 
         const userDetails = {
-            username, password
+            email, password
         }
 
         const url = 'https://todos-app-nk7v.onrender.com/login'
@@ -32,7 +36,7 @@ const Login = () => {
             Cookies.set('jwt', data.jwtToken,{ expires: 30, path: '' })
             history.push('/');  
         }else{
-            setError('Enter correct details')
+            setError(data.errorMsg)
         }
 
         
@@ -45,10 +49,10 @@ const Login = () => {
                     <h2>Welcome Back!</h2>
                     <form onSubmit={onSubmitLogin}>
                         <input
-                            type="text"
-                            placeholder="Username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                         <input
@@ -60,7 +64,7 @@ const Login = () => {
                         />
                         <button type="submit">Login</button>
                         {error && <p className="error">{error}</p>}
-                        <p className="signup-link">Don’t have an account? <a href="#">Sign Up</a></p>
+                        <p className="signup-link">Don’t have an account? <a href="/signup">Sign Up</a></p>
                     </form>
                 </div>
             </div>

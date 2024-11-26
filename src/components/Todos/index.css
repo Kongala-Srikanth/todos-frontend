@@ -6,9 +6,10 @@
 }
 
 .todos-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
+  min-height: 100vh;
   background-color: #f7f9fc;
 }
 
@@ -137,4 +138,75 @@
 
 .error{
   color: red;
+  margin-top: 15px;
+  text-align: left;
 }
+
+.edit-btn-disabled{
+  background-color: #4caf4f6b;
+}
+
+.edit-btn-disabled:hover{
+  background-color: #4caf4f6b;
+}
+
+.delete-btn-disabled {
+  background-color: #f4433685;
+}
+.delete-btn-disabled:hover {
+  background-color: #f4433685;
+}
+
+.hide-btn{
+  background-color: transparent;
+  border-width: 0px;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+.hide-btn:hover{
+  background-color: transparent;
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.icons{
+  color: #000000;
+  font-size: 25px;
+}
+
+
+
+
+
+
+
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  text-align: center;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.no-data-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.no-data-container p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
